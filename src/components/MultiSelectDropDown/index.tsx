@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import styles from "./MultiSelectDropdown.module.scss";
 
 interface Option {
@@ -11,10 +11,10 @@ interface MultiSelectDropdownProps {
   onSelect: (selected: Option[]) => void;
 }
 
-const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
+export default function MultiSelectDropdown({
   options,
   onSelect,
-}) => {
+}: MultiSelectDropdownProps) {
   const [availableOptions, setAvailableOptions] = useState<Option[]>(options);
   const [selected, setSelected] = useState<Option[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -115,6 +115,4 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
       )}
     </div>
   );
-};
-
-export default MultiSelectDropdown;
+}
